@@ -1,17 +1,19 @@
-/*Selenium and JUnit Test verify items within a page is present and email functions are working.*/
+/*Selenium WebDriver and JUnit Test verify items within a page is present and email functions are working.*/
 
 package ShoeStore;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import junit.framework.Assert;
+
+
 
 
 public class ShoeTest {
@@ -95,14 +97,17 @@ public class ShoeTest {
 			//if statement to verify elements are present
         	if (dfj == null){
         		Sixed++;
+        		//String product;
         		
         		//Display the results is not displayed
-        		System.out.println("Not Displayed.");
+        		System.out.println(dfj.isDisplayed());
+        		
         	}
         	else
         	{
-        		//Display the results is displayed
-        		System.out.println("Displayed.");
+        		//Display the results is displayed  		
+        		System.out.println(dfj.isDisplayed());
+        		
         	}//end if/else
 		}//end for 
 		
@@ -141,6 +146,7 @@ public class ShoeTest {
 		drv.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		
 		//Assert to verify the message is present
+				
 		Assert.assertTrue(fnd.contains("Thanks! We will notify you of our new shoes at this email:"));
 
 		//Initialized a string and assign the message to display at a certain point with substring
@@ -157,15 +163,15 @@ public class ShoeTest {
 		Assert.assertEquals(fnd, "Thanks! We will notify you of our new shoes at this email:" + foe4);
 		
 	}//end of Email
-		
 		@AfterClass
 		public static void CleanUp(){
+				
+		//Print Displayed of the results of the test.
+		System.out.println("Test Successful");
+		
 		//Close all Webdriver
 		drv.close();
 		
-		//Print Displayed of the results of the test.
-		System.out.println("Test Successful");
-	
 	}
 }
 
